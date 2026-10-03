@@ -1,6 +1,6 @@
 # Stock Desk — repair plan
 
-Source audit: 2026-10-03. This list concerns defects, unreliable behavior, and friction in existing flows. It is **not** a feature roadmap. Findings below are proven by the current source unless marked **needs runtime check**. No production data was changed for this audit.
+Source audit: 2026-10-03. This list concerns defects, unreliable behavior, and friction in existing flows. It is **not** a feature roadmap. The original findings below are retained as the repair record; implementation status is at the end.
 
 ## Fix first
 
@@ -32,4 +32,8 @@ Source audit: 2026-10-03. This list concerns defects, unreliable behavior, and f
 4. Put the source under version control before further deployment, then address correction and navigation flow (F06, F08, F11).
 5. Finish the Arabic and keyboard passes (F09–F10).
 
-This is a source review, not a claim that each path was reproduced against the live Supabase project. F05's API limit and F07's expected refund policy need focused runtime/business checks during implementation. No schema change or deployment is proposed by this document alone.
+## Implementation status — 2026-10-03
+
+- **Completed:** F01–F04 and F06–F12. The refund, fulfillment, and cancellation repairs are in migrations `20261003190000` and `20261003191000`, applied to the `stock` project. The source is on the repository's `source` branch.
+- **F05 improved, with a scaling limit left:** table and RPC reads now page through results in batches of 500, so the configured API row cap no longer silently truncates them. Writes refresh only affected datasets. Initial sign-in still loads full history and reports still calculate most financial totals in the browser. Move those totals and large histories to bounded server queries before expecting very large datasets to remain fast.
+- **Checks:** production build, Arabic coverage, desktop/mobile browser checks, rollback-only SQL workflow test, and temporary cashier permission test passed. The read pagination has not been stress-tested with a large live dataset.
