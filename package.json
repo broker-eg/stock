@@ -1,0 +1,29 @@
+{
+  "name": "stock-desk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5187 --strictPort",
+    "build": "tsc -b && vite build",
+    "check:locales": "node scripts/check-locales.mjs",
+    "check:locale-ui": "node scripts/locale-check.mjs",
+    "format": "prettier --write src vite.config.ts index.html",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "playwright-core": "^1.63.0",
+    "prettier": "^3.9.9",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

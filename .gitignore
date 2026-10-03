@@ -1,0 +1,15 @@
+.secrets/
+.source-git/
+.agents/
+.codex/
+.aws
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+supabase/.temp/
+coverage/
+.DS_Store
+*.tsbuildinfo
