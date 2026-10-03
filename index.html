@@ -2,14 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      try {
+        const saved = localStorage.getItem('stock-desk-language')
+        const language =
+          saved === 'en' || saved === 'ar'
+            ? saved
+            : navigator.language.toLowerCase().startsWith('ar')
+              ? 'ar'
+              : 'en'
+        document.documentElement.lang = language
+        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+      } catch {
+        document.documentElement.lang = navigator.language.toLowerCase().startsWith('ar')
+          ? 'ar'
+          : 'en'
+        document.documentElement.dir = document.documentElement.lang === 'ar' ? 'rtl' : 'ltr'
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f4f0" />
     <link rel="icon" type="image/svg+xml" href="/stock/favicon.svg" />
     <title>Stock Desk</title>
-    <script type="module" crossorigin src="/stock/assets/index-DxjXyR0K.js"></script>
+    <script type="module" crossorigin src="/stock/assets/index-C-TEfinl.js"></script>
     <link rel="modulepreload" crossorigin href="/stock/assets/react-BEiHexpT.js">
     <link rel="modulepreload" crossorigin href="/stock/assets/supabase-B4WnJLNZ.js">
-    <link rel="stylesheet" crossorigin href="/stock/assets/index-BfqNHouY.css">
+    <link rel="stylesheet" crossorigin href="/stock/assets/index-Bw8hHG0J.css">
   </head>
   <body>
     <div id="root"></div>
